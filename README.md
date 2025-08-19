@@ -180,7 +180,7 @@ Allow some time for the OpenWebUI and Jetson™ DeepSeek Ollama container to set
 /workspace/wise-bench.sh
 ```
 
-![ollama-wise-bench.png](..%2Fdata%2Fimages%2Follama-wise-bench.png)
+![ollama-wise-bench.png](data/images/ollama-wise-bench.png)
 
 Wise-bench logs are saved in `wise-bench.log` file under `/workspace`
 
@@ -199,11 +199,11 @@ http://localhost_or_Jetson_IP:3000
 ### Select Model
 In case Ollama has multiple models available, choose from the list of models on the top-left of OpenWebUI after signing up/logging in successfully. As shown below. Select DeepSeek R1 1.5B:
 
-![Select Model](..%2Fdata%2Fimages%2Fselect-model.png)
+![Select Model](data/images/select-model.png)
 
 ### Quick Demonstration:
 
-![Demo](..%2Fdata%2Fgifs%2Fdeepseek.gif)
+![Demo](data/gifs/deepseek.gif)
 
 ## Prompt Guidelines
 
@@ -356,7 +356,7 @@ Response:
 ```
 Sample Screenshot:
 
-![ollama-curl.png](..%2Fdata%2Fimages%2Follama-curl.png)
+![ollama-curl.png](data/images/ollama-curl.png)
 
 For further API details, please refer to the official documentation of Ollama as mentioned on top.
 
