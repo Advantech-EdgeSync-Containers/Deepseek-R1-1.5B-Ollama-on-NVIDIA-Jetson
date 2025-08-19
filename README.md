@@ -23,7 +23,7 @@ DeepSeek-R1 1.5B Ollama on NVIDIA Jetson™ provides Ollama & DeepSeek R1 1.5B M
 
 
 ## Architecture
-![DeepSeek Ollama](..%2Fdata%2Farchitectures%2Follama-deepseek.png)
+![DeepSeek Ollama](data/architecture/ollama-deepseek.png)
 
 ## Repository Structure
 ```
