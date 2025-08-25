@@ -26,7 +26,7 @@ This container image, Deepseek-R1 1.5B Ollama on NVIDIA Jetson™, bundles a rea
 
 
 ## Container Demo
-![Demo](..%2Fdata%2Fgifs%2Fdeepseek.gif)
+![Demo](data/gifs/deepseek.gif)
 
 ## Use Case 
 
