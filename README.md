@@ -150,7 +150,7 @@ The following software components/packages are provided further as a part of thi
 
 ```
 # Clone the repository
-git clone https://github.com/Advantech-EdgeSync-Containers/Nagarro-Container-Project.git
+git clone https://github.com/Advantech-EdgeSync-Containers/Deepseek-R1-1.5B-Ollama-on-NVIDIA-Jetson.git
 cd Deepseek-R1-1.5B-Ollama-on-NVIDIA-Jetson
 
 # Make the build script executable
