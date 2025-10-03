@@ -1,20 +1,63 @@
 #!/bin/bash
-
-
-
-# Created by Samir Singh <samir.singh@advantech.com>
-
-# Copyright (c) 2025 Advantech Corporation
-
-
-
-# This script is a wrapper that runs the encoded entrypoint script
-
-# The encoding protects the implementation details while allowing execution
-
-
-
-# Clear the terminal
+# ==========================================================================
+# WiseBench: Deepseek-R1-1.5B-Ollama Diagnostics Tool
+# ==========================================================================
+# Version:      2.1.0
+# Author:       Samir Singh <samir.singh@advantech.com> and Apoorv Saxena <apoorv.saxena@advantech.com>
+# Last Updated: October 03, 2025
+# 
+# Description:
+#   WiseBench is a comprehensive diagnostic tool for validating Jetson-based
+#   AI development environments. It performs end-to-end testing of hardware
+#   acceleration, deep learning frameworks, and LLM inference capabilities
+#   with support for Ollama server integration.
+#
+# Key Features:
+#   • Hardware Acceleration Validation:
+#       – CUDA toolkit and TensorRT verification
+#       – GPU device detection and enumeration
+#       – Video codec acceleration (NVENC/NVDEC, H.264/H.265)
+#       – NVIDIA device node setup and configuration
+#   
+#   • Deep Learning Framework Testing:
+#       – PyTorch CUDA availability and device detection
+#       – TensorFlow GPU configuration verification
+#       – OpenCV CUDA module validation
+#       – ONNX Runtime execution provider enumeration
+#   
+#   • LLM Inference Stack Diagnostics:
+#       – Ollama server connectivity and health checks
+#       – Live inference testing with sample prompts
+#       – GPU offloading detection (CPU vs GPU execution)
+#       – Ollama API compatibility verification
+#   
+# Environment Variables:
+#   - OPENAI_API_OLLAMA_BASE: Ollama server base URL (e.g., http://localhost:11434)
+#   - MODEL_NAME: Model identifier for inference testing
+#
+# Output:
+#   - Terminal: Real-time formatted output with visual indicators
+#   - Log File: /workspace/wise-bench.log (timestamped, append mode)
+#
+#
+# Exit Behavior:
+#   Script completes diagnostics and displays summary scores for:
+#   1. Hardware Acceleration (CUDA, video, frameworks) - 5 components
+#   2. LLM Stack (Ollama server, inference, execution mode) - up to 3 components
+#
+# Terms and Conditions:
+#   1. Provided by Advantech Corporation "as is," without any express or
+#      implied warranties of merchantability or fitness for a particular
+#      purpose.
+#   2. In no event shall Advantech Corporation be liable for any direct,
+#      indirect, incidental, special, exemplary, or consequential damages
+#      arising from the use of this software.
+#   3. Redistribution and use in source and binary forms, with or without
+#      modification, are permitted provided this notice appears in all
+#      copies.
+#
+# Copyright (c) 2025 Advantech Corporation. All rights reserved.
+# ==========================================================================
 
 clear
 

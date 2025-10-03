@@ -1,12 +1,49 @@
-version: "2.4"
-# Advantech Jetson™ Deepseek Ollama AI development Docker Compose file 
-# Created and maintained by Samir Singh <samir.singh@advantech.com>
-# This Docker Compose file configures the Jetson™ Deepseek Ollama AI Development Container
-# with all necessary hardware acceleration settings.
+# ==========================================================================
+# Jetson™ DeepSeek Ollama AI Development Docker Compose File
+# ==========================================================================
+# Version:      1.5.0
+# Author:       Samir Singh <samir.singh@advantech.com> and Apoorv Saxena<apoorv.saxena@advantech.com>
+# Last Updated: October 03, 2025
+# 
+# Description:
+#   Multi-service configuration for DeepSeek R1 1.5B model deployment on
+#   NVIDIA Jetson with Ollama inference engine and OpenWebUI frontend.
+#
+# Key Features:
+#   • Ollama Inference Service:
+#       – GPU-accelerated inference with native Ollama API
+#       – Full NVIDIA hardware acceleration (CUDA, TensorRT, NVENC/NVDEC)
+#       – Integrated WiseBench diagnostics and service startup scripts
+#   
+#   • OpenWebUI Frontend Service:
+#       – Web-based chat interface with persistent storage
+#       – Connects via Ollama OpenAI-compatible endpoint (/v1)
+#       – Configurable port and generation features
+#
+# Services:
+#   - deepseek-ollama-service: DeepSeek R1 1.5B with Ollama engine
+#   - openweb-ui-service: Web interface for LLM interaction
+#
+# Volumes:
+#   - ollama-models: Persistent Ollama model storage (/root/.ollama)
+#   - open-webui: OpenWebUI data persistence
+#
+#
+# Terms and Conditions:
+#   1. Provided by Advantech Corporation "as is," without any express or
+#      implied warranties of merchantability or fitness for a particular
+#      purpose.
+#   2. In no event shall Advantech Corporation be liable for any direct,
+#      indirect, incidental, special, exemplary, or consequential damages
+#      arising from the use of this software.
+#   3. Redistribution and use in source and binary forms, with or without
+#      modification, are permitted provided this notice appears in all
+#      copies.
+#
 # Copyright (c) 2025 Advantech Corporation. All rights reserved.
-services:
+# ==========================================================================
   deepseek-ollama-service:
-      image: harbor.edgesync.cloud/nagarro-container-images/deepseek-r1-1.5b-ollama-on-nvidia-jetson:v1
+      image: edgesync.azurecr.io/advantech/deepseek-r-b-ollama-on-nvidia-jetson:1.5.0-Ubuntu20.04-ARM
       container_name: Deepseek-R1-1.5B-Ollama-on-NVIDIA-Jetson
       env_file: .env
       privileged: true
