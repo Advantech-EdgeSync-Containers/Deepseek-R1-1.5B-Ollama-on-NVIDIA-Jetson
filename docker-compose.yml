@@ -42,6 +42,7 @@
 #
 # Copyright (c) 2025 Advantech Corporation. All rights reserved.
 # ==========================================================================
+services:
   deepseek-ollama-service:
       image: edgesync.azurecr.io/advantech/deepseek-r-b-ollama-on-nvidia-jetson:1.5.0-Ubuntu20.04-ARM
       container_name: Deepseek-R1-1.5B-Ollama-on-NVIDIA-Jetson
