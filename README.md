@@ -18,6 +18,9 @@ DeepSeek-R1 1.5B Ollama on NVIDIA Jetson™ provides Ollama & DeepSeek R1 1.5B M
 | **TensorRT** | 8.5.2.2 |
 | **OpenCV** | 4.5.4 |
 
+* CUDA , CuDNN , TensorRT , OpenCV versions Depends on JetPack version 5.x
+* Please refer to the [NVIDIA JetPack Documentation](https://developer.nvidia.com/embedded/jetpack) for more details on compatible versions.
+
 ## Key Features
 
 | Feature | Description |
