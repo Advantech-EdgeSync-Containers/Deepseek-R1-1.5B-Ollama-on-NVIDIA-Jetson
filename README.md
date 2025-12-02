@@ -200,7 +200,7 @@ Allow some time for the OpenWebUI and Jetson™ DeepSeek Ollama container to set
 # Verify AI Accelerator and Software Stack Inside Docker Container
 # Under /workspace, run this command
 # Provide executable rights
-chmod +x /wise-bench.sh
+chmod +x wise-bench.sh
 
 # To run Wise-bench
 ./wise-bench.sh
