@@ -146,8 +146,6 @@ The following software components are available in the base image:
 | PyTorch      | 2.0.0+nv23.02  | Deep learning framework            |
 | TensorFlow   | 2.12.0         | Machine learning framework         |
 | ONNX Runtime | 1.16.3         | Cross-platform inference engine    |
-| VPI          | 3.2.4          | Vision Programming Interface       |
-| Vulkan       | 1.3.204        | Graphics and compute API           |
 | OpenCV       | 4.8.0          | Computer vision library with CUDA® |
 | GStreamer    | 1.16.2         | Multimedia framework               |
 
@@ -324,7 +322,7 @@ def generate_with_ollama_stream(prompt, model='deepseek-r1:1.5b'):
                     print(f"[Error decoding JSON chunk]: {e}")
 
 # Example usage
-if name == "__main__":
+if __name__ == "__main__":
     prompt = "Explain quantum computing in simple terms."
     generate_with_ollama_stream(prompt, model="deepseek-r1:1.5b")
 
@@ -365,7 +363,7 @@ Ollama APIs are accessible on the default endpoint (unless modified). If needed,
 
 Inference Request:
 ```
-curl http://localhost_or_Jetson_IP:11434/api/generate -d '{
+curl http://localhost:11434/api/generate -d '{
   "model": "deepseek-r1:1.5b",
   "prompt": "Why is the sky blue?",
   "stream": false
