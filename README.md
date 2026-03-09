@@ -3,7 +3,7 @@
 **Version:** 1.0
 **Release Date:** May 2025
 **Copyright:** © 2025 Advantech Corporation. All rights reserved.
->  Check our [Troubleshooting Wiki](https://github.com/Advantech-EdgeSync-Containers/GPU-Passthrough-on-NVIDIA-Jetson/wiki/Advantech-Containers'-Troubleshooting-Guide) for common issues and solutions.
+>  Check our [Troubleshooting Wiki](https://github.com/Advantech-Containers/GPU-Passthrough-on-NVIDIA-Jetson/wiki/Advantech-Containers'-Troubleshooting-Guide) for common issues and solutions.
 
 ## Overview
 DeepSeek-R1 1.5B Ollama on NVIDIA Jetson™ provides Ollama & DeepSeek R1 1.5B Model for a streamlined, hardware-accelerated environment for developing and deploying conversational AI applications on NVIDIA Jetson™ devices. This container integrates OpenWebUI for a user-friendly chat interface and leverages the DeepSeek language model for efficient on-device inference. It includes hardware-accelerated AI software components, delivering a complete development environment. Optimized for edge deployments, it ensures high performance, low latency, and reliable real-time AI interaction.
@@ -363,7 +363,7 @@ Ollama APIs are accessible on the default endpoint (unless modified). If needed,
 
 Inference Request:
 ```
-curl http://localhost_or_Jetson_IP:11434/api/generate -d '{
+curl http://localhost:11434/api/generate -d '{
   "model": "deepseek-r1:1.5b",
   "prompt": "Why is the sky blue?",
   "stream": false
