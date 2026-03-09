@@ -1,7 +1,7 @@
 # Deepseek-R1 1.5B Ollama on NVIDIA Jetson™
 
 **Version:** 1.0
-**Release Date:** May 2025
+**Release Date:** November 2025
 **Copyright:** © 2025 Advantech Corporation. All rights reserved.
 >  Check our [Troubleshooting Wiki](https://github.com/Advantech-Containers/GPU-Passthrough-on-NVIDIA-Jetson/wiki/Advantech-Containers'-Troubleshooting-Guide) for common issues and solutions.
 
@@ -12,13 +12,13 @@ DeepSeek-R1 1.5B Ollama on NVIDIA Jetson™ provides Ollama & DeepSeek R1 1.5B M
 
 | Component | Version/Requirement |
 |-----------|---------|
-| **JetPack** | 5.x |
-| **CUDA** | 11.4.315 |
-| **cuDNN** | 8.6.0.166 |
-| **TensorRT** | 8.5.2.2 |
-| **OpenCV** | 4.5.4 |
+| **JetPack** | 6.x |
+| **CUDA** | 12.6.68 |
+| **cuDNN** | 9.3.0.75 |
+| **TensorRT** | 10.3.0.30 |
+| **OpenCV** | 4.8.0 |
 
-* CUDA , CuDNN , TensorRT , OpenCV versions Depends on JetPack version 5.x
+* CUDA , CuDNN , TensorRT , OpenCV versions Depends on JetPack version 6.x
 * Please refer to the [NVIDIA JetPack Documentation](https://developer.nvidia.com/embedded/jetpack) for more details on compatible versions.
 
 ## Key Features
@@ -132,7 +132,7 @@ This image uses DeepSeek R1-1.5B for inferencing; here are the details about the
 | GPU             | NVIDIA® Ampere architecture with 1024 CUDA® cores |
 | DLA Cores       | 1 (Deep Learning Accelerator)                     |
 | Memory          | 4/8/16 GB shared GPU/CPU memory                   |
-| JetPack Version | 5.x                                               |
+| JetPack Version | 6.0                                               |
 
 ## Software Components
 
@@ -140,13 +140,13 @@ The following software components are available in the base image:
 
 | Component    | Version        | Description                        |
 |--------------|----------------|------------------------------------|
-| CUDA®        | 11.4.315       | GPU computing platform             |
-| cuDNN        | 8.6.0          | Deep Neural Network library        |
-| TensorRT™    | 8.5.2.2        | Inference optimizer and runtime    |
+| CUDA®        | 12.6.68        | GPU computing platform             |
+| cuDNN        | 9.3.0.75       | Deep Neural Network library        |
+| TensorRT™    | 10.3.0.30      | Inference optimizer and runtime    |
 | PyTorch      | 2.0.0+nv23.02  | Deep learning framework            |
-| TensorFlow   | 2.12.0 | Machine learning framework         |
+| TensorFlow   | 2.12.0         | Machine learning framework         |
 | ONNX Runtime | 1.16.3         | Cross-platform inference engine    |
-| OpenCV       | 4.5.0          | Computer vision library with CUDA® |
+| OpenCV       | 4.8.0          | Computer vision library with CUDA® |
 | GStreamer    | 1.16.2         | Multimedia framework               |
 
 
@@ -158,7 +158,7 @@ The following software components/packages are provided further as a part of thi
 | OpenWebUI | 0.6.5 | Provided via separate OpenWebUI container for UI  |
 | DeepSeek R1 1.5B | N/A | Pulled inside Ollama container and persisted via docker volume  |
 
-## Before You Start 
+## Before You Start
 - Ensure the following components are installed on your host system:
   - **Docker** (v28.1.1 or compatible)
   - **Docker Compose** (v2.39.1 or compatible)
@@ -322,7 +322,7 @@ def generate_with_ollama_stream(prompt, model='deepseek-r1:1.5b'):
                     print(f"[Error decoding JSON chunk]: {e}")
 
 # Example usage
-if name == "__main__":
+if __name__ == "__main__":
     prompt = "Explain quantum computing in simple terms."
     generate_with_ollama_stream(prompt, model="deepseek-r1:1.5b")
 
