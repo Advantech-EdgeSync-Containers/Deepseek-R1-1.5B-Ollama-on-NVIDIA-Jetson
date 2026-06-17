@@ -587,24 +587,16 @@ if curl --silent --fail "$OPENAI_API_OLLAMA_BASE/api/tags" > /dev/null; then
     print_table_row "Ollama Server Status" "✓ Running"
     OLLAMA_STATUS=1
     MAX=$((MAX + 2))
-
-    # Run basic inference (forces the model to load into memory/VRAM)
+    # Run basic inference
     RESPONSE=$(curl -s -X POST "$OPENAI_API_OLLAMA_BASE/api/generate" \
     -H "Content-Type: application/json" \
     -d "{
           \"model\": \"$MODEL_NAME\",
           \"prompt\": \"Hi! How are you?\",
-          \"stream\": false,
-          \"keep_alive\": -1
+          \"stream\": false
         }")
 
-    # Robust JSON parsing: Prefer jq, fall back to grep regex if unavailable
-    if command -v jq > /dev/null; then
-        MESSAGE=$(echo "$RESPONSE" | jq -r '.response // empty' | tr '\n' ' ')
-    else
-        MESSAGE=$(echo "$RESPONSE" | grep -oP '"response"\s*:\s*"\K[^"]+')
-    fi
-
+    MESSAGE=$(echo "$RESPONSE" | grep -oP '"response"\s*:\s*"\K[^"]+')
     if [ -n "$MESSAGE" ]; then
         INFERENCE_STATUS=1
         print_table_row "Ollama Test Inference (Hi, How are you?)" "✓ $MESSAGE"
@@ -612,25 +604,18 @@ if curl --silent --fail "$OPENAI_API_OLLAMA_BASE/api/tags" > /dev/null; then
         print_table_row "Ollama Test Inference (Hi, How are you?)" "⚠ No valid response"
     fi
 
-    # ---- Live Check Ollama Execution Mode (Script 1 Logic -> Script 2 Output) ----
-    MODEL_INFO=$(curl -s "$OPENAI_API_OLLAMA_BASE/api/ps")
-    MODEL_COUNT=$(echo "$MODEL_INFO" | grep -o '"name"' | wc -l)
-    
-    if [ "$MODEL_COUNT" -gt 0 ]; then
-        VRAM_SIZE=$(echo "$MODEL_INFO" | grep -o '"size_vram":[0-9]*' | head -n 1 | cut -d: -f2)
-        : "${VRAM_SIZE:=0}"
-        
-        EXEC_MODE_STATUS=1
-        # If any bytes are offloaded to VRAM, we report "GPU" to match Script 2's expected output
-        if [ "$VRAM_SIZE" -gt 0 ]; then
-            EXEC_MODE="GPU"
-        else
-            EXEC_MODE="CPU"
-        fi
+    # ---- Check Ollama Execution Mode ----
+    LOG_PATH="/workspace/ollama.log"
+    LAST_OFFLOAD=$(grep -E "offloading .* to GPU" "$LOG_PATH" | tail -n 1)
+    EXEC_MODE_STATUS=1
+    if echo "$LAST_OFFLOAD" | grep -q "offloading .* to GPU"; then
+        EXEC_MODE="GPU"
     else
-        EXEC_MODE="CPU" # Fallback default if no active model process is caught
+        EXEC_MODE="CPU"
     fi
+
     print_table_row "Ollama Execution Mode" "$EXEC_MODE"
+
 else
     print_table_row "Ollama Server Status" "⚠ Not Running"
 fi
